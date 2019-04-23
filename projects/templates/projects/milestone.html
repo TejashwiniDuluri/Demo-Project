@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="">
+		<div class="row">
+			<div class="col-md-2" style="border-right: solid 1px gray;">
+				<div class="leftMenu">
+					<div>
+						<h4 class="heading-secondary">Course : <a href="/project/{{milestone.project.id}}"><strong>{{milestone.project.name}}</strong></a></h4>
+						<h5 class="heading-secondary">Chapter : <a href="">{{milestone.name}} </a></h5>
+						
+						<ul class="nav nav-list flex-column list-icons list-icons-style-3">
+							{% for top in milestone.project.milestone_set.all %}
+								
+								{% if top.name in last and max != top.name %}
+								
+									<li class="nav-item">
+										<a class="nav-link" href="/milestone/{{top.id}}/">{{top}}&nbsp;<i class="fas fa-check"></i></a>
+									</li>
+								{% elif top.name in last and max == top.name %}
+									<li class="nav-item activeCus">
+										<a href="/milestone/{{top.id}}/">{{top}}</i></a>
+									</li>
+									
+								{% else %}
+									<li class="nav-item active">
+										<a href="/milestone/{{top.id}}/">{{top}}</a>
+									</li>
+								{% endif %}
+								
+								
+							{% endfor %}
+							
+						</ul>
+						<!-- <h5>Assignments</h5>
+							<ul class="nav nav-list flex-column mb-3">
+								<li class="nav-item active"><a href="/assign/{{topic.chapter.id}}/">Assignment</a></li>
+								<li class="nav-item active"><a href="/assign/{{topic.chapter.id}}/">Assignment</a></li>
+							</ul> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="contentProjector">
+					{{contents|safe}}
+					
+					
+				<div class="row">
+					<div class="col-md-4">
+					    {% if previous_page %}
+					      <a class="btn btn-primary btn-outline form-control" href="/milestone/{{previous_page_num}}/">previous</a>
+					    {% endif %}
+					</div>
+					<div class="col-md-4">
+					    {% if tests %}
+				    		{% for test in tests %}
+				    		<a class="btn btn-outline btn-tertiary form-control" href="/project_test_launch/{{test.id}}">Take a Test</a>
+				    		{% endfor %}
+					    {% endif %}
+				    </div>
+					<div class="col-md-4">
+					    {% if next_page %}
+					      <a class="btn btn-primary btn-outline form-control" href="/milestone/{{next_page_num}}/">next</a>
+					    {% endif %}
+					    {% if not next_page %}
+				
+					     	<!-- <a class="btn btn-warning btn-outline form-control" href="/assign/{{assign}}/">Take an Assignment</a> -->
+					    	<a class="btn btn-warning btn-outline form-control" href="">End</a>
+					    {% endif %}
+					</div>
+					</div>
+			
+				</div>
+			</div>
+			<!-- <div class="row"> -->
+			<!-- </div> -->
+		</div>
+	</div>
+{% endblock %}

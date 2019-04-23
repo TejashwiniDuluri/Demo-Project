@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% block content %}
+    <div class="container"> 
+    <h2 class="mb-3 mt-2"><strong>In-Messages</strong></h2>
+
+        <div class="toggle toggle-primary mt-4" data-plugin-toggle="">
+            {% for message in inmessages %}
+            <section class="toggle" id="{{message.id}}">
+                <label>{{message.sender.username}}&nbsp({{message.sender.phone_number}}) {{message.created_at}}</label>
+
+                <div class="toggle-content" style="display: none;">
+                    <p><strong>Message :</strong> {{message.msg_content}}</p>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    <h2 class="mb-3 mt-2"><strong>Out-Messages</strong></h2>
+        <div class="toggle toggle-primary mt-4" data-plugin-toggle="">
+            {% for message in outmessages %}
+            <section class="toggle" id="{{message.id}}">
+                <label>{{message.sender.username}}&nbsp({{message.sender.phone_number}}) {{message.created_at}}</label>
+
+                <div class="toggle-content" style="display: none;">
+                    <p><strong>Message :</strong> {{message.msg_content}}</p>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

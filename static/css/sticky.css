@@ -1,0 +1,33 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+.footer {
+  padding-top: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 4em;
+  margin-top:100px; 
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.spacer5{
+  height: 50px;
+}
+
+.goog-te-banner-frame{
+  display: none;
+}

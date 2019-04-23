@@ -1,0 +1,28 @@
+from django.contrib import admin
+from .models import *
+
+# Register your models here.
+admin.site.register(Courses)
+admin.site.register(Chapter)
+admin.site.register(Topics)
+admin.site.register(Registered_courses)
+admin.site.register(Course_chapter)
+admin.site.register(Chapter_topic)
+admin.site.register(Question)
+admin.site.register(Answer)
+admin.site.register(TestResult)
+admin.site.register(Test)
+#admin.site.register(User)
+admin.site.register(Account)
+admin.site.register(Group)
+admin.site.register(Message)
+admin.site.register(Assignment)
+admin.site.register(Cart)
+admin.site.register(Registered_topics)
+admin.site.register(Registered_chapters)
+admin.site.register(Ssh)
+# admin.site.register(Project)
+# admin.site.register(project_chapters)
+admin.site.register(Assignment_create)
+admin.site.register(shortlist)
+admin.site.register(employer_task)

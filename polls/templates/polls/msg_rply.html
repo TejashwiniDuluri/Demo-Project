@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="containerCus">
+<h2 class="mb-3 mt-2"><strong>New</strong> Message</h2>
+
+    <form  action="/message_reply/{{a}}/" method="POST" novalidate="novalidate">{% csrf_token %}
+	<div class="form-row">
+	    <div class="form-group col">
+	        <label>Message *</label>
+	        <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message" required=""></textarea>
+	    </div>
+	</div>
+	<div class="form-row">
+        <div class="form-group col">
+            <input type="submit" value="Send Message" class="btn btn-primary btn-lg" data-loading-text="Loading...">
+        </div>
+    </div>
+	</form>
+</div>
+{% endblock %}

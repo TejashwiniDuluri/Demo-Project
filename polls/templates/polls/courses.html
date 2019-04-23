@@ -1,0 +1,42 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container">
+
+	<h2>Select a <strong>Course</strong></h2>
+
+	<ul class="nav nav-pills sort-source" data-sort-id="team" data-option-key="filter">
+		<li class="nav-item" data-option-value="*"><a class="nav-link active" href="#">Show All</a></li>
+		<li class="nav-item" data-option-value=".Javascript"><a class="nav-link" href="#">Javascript</a></li>
+		<li class="nav-item" data-option-value=".HTMLCSS"><a class="nav-link" href="#">HTML&CSS</a></li>
+		<li class="nav-item" data-option-value=".MachineLearning"><a class="nav-link" href="#">Machine Learning</a></li>
+		<li class="nav-item" data-option-value=".Backend"><a class="nav-link" href="#">Backend</a></li>
+		<li class="nav-item" data-option-value=".Database"><a class="nav-link" href="#">Database</a></li>
+	</ul>
+
+	<div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+		<div class="row team-list sort-destination" data-sort-id="team">
+			{% for course in all_courses %}
+			<div class="col-12 col-sm-6 col-lg-3 isotope-item {{course.tag_name}}">
+				<span class="thumb-info thumb-info-hide-wrapper-bg mb-4">
+					<span class="thumb-info-wrapper">
+						<a href="/course/{{course.id}}">
+							<img src="/static/images/{{course.name}}.png" class="img-fluid" alt="">
+							<span class="thumb-info-title">
+								<span class="thumb-info-inner">{{course.name}}</span>
+								<span class="thumb-info-type">Open</span>
+							</span>
+						</a>
+					</span>
+					<span class="thumb-info-caption">
+						<span class="thumb-info-social-icons">
+							<a target="_blank" href="http://www.facebook.com"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+							<a href="http://www.twitter.com"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+							<a href="http://www.linkedin.com"><i class="fab fa-linkedin-in"></i><span>Linkedin</span></a>
+						</span>
+					</span>
+				</span>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

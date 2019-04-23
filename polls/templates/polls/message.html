@@ -1,0 +1,112 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<!-- <form method="POST" action="/message">{% csrf_token %}
+    <div class="container">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Sender</label>
+                <input type="text" value="" class="form-control form-control-lg" name="sender">
+            </div>
+            <div class="form-group">
+                <label>Reciever</label>
+                <input type="text" value="" class="form-control form-control-lg" name="email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+               <input type="submit" value="Send" class="btn btn-primary float-right mb-5" data-loading-text="Loading...">
+            </div>
+        </div>
+    </div>
+</form>
+ -->
+
+<div class="containerCus">
+<div class="row">
+<div class="col-lg-6">
+
+                            <div class="alert alert-success d-none mt-4" id="contactSuccess">
+                                <strong>Success!</strong> Your message has been sent to us.
+                            </div>
+
+                            <div class="alert alert-danger d-none mt-4" id="contactError">
+                                <strong>Error!</strong> There was an error sending your message.
+                                <span class="text-1 mt-2 d-block" id="mailErrorMessage"></span>
+                            </div>
+
+                            <h2 class="mb-3 mt-2"><strong>New</strong> Message</h2>
+
+                            <form id="contactForm" action="/message" method="POST" novalidate="novalidate">{% csrf_token %}
+                                
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label>Reciever</label>
+                                        <input type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="email" id="email" required="">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label>Message *</label>
+                                        <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message" required=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <input type="submit" value="Send Message" class="btn btn-primary btn-lg" data-loading-text="Loading...">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+<div class="col-lg-6">
+    <div class="inbox">
+        <h2 class="mb-3 mt-2"><strong>Inbox</strong></h2>
+
+        <div class="toggle toggle-primary mt-4" data-plugin-toggle="">
+            {% for message in inmessages %}
+            <section class="toggle" id="{{message.id}}">
+                <label>{{message.sender.username}}&nbsp({{message.sender.phone_number}}) {{message.created_at}}</label>
+
+                <div class="toggle-content" style="display: none;">
+                    <p><strong>Message :</strong> {{message.msg_content}}</p>
+                    <p><a class="btn btn-primary mb-4" href="/message_reply/{{message.sender.id}}/">Reply Now</a></p>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="spacer10"></div>
+    <div class="outbox">
+        <h2 class="mb-3 mt-2"><strong>Outbox</strong></h2>
+
+        <div class="toggle toggle-primary mt-4" data-plugin-toggle="" >
+            {% for message in outmessages %}
+            <section class="toggle toggle1" id="{{message.id}}">
+                <label>{{message.reciever.username}}&nbsp({{message.reciever.phone_number}}) {{message.created_at}}</label>
+                <div class="toggle-content" style="display: none;">
+                    <p><strong>Message :</strong> {{message.msg_content}}</p>
+                    <p><a class="btn btn-primary mb-4" href="/message_delete/{{message.id}}/">Delete</a></p>
+                </div>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+

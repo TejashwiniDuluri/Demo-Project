@@ -1,0 +1,89 @@
+{% extends 'home.html' %}
+{%block content %}
+<div class="containerCus">
+	<div class="featured-box featured-box-primary text-center mt-5">
+		<div class="box-content center">
+			<div class= "col text-center">
+			<div class="">
+			<h1><span style="color:green">Chapter</span> : <span style="color:#2baab1;">{{chapter}}</span></h1>
+			</div>
+			<div>
+
+				{% for key in data %}
+					{% for i in key.data %}
+						<div>
+							<div>
+								<div class="row">
+									<div class="col-md-4 ques_height"><strong style="color: #0088cc;">Topic : {{key.topic}}</strong></div>
+									<div class="col-md-4 ques_height">
+										{% if i.test_percent > 80 %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span class="heading-bottom-border" style="color:green">{{i.test_percent}} %</span></strong>
+										{% elif i.test_percent < 80 and i.test_percent > 50 %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span style="color:#2baab1;">{{i.test_percent}} %</span></strong>
+										{% else %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span style="color:red">{{i.test_percent}} %</span></strong>
+										{% endif %}
+									</div>
+									<div class="col-md-4 ques_height"><strong style="color: #2baab1;">Time Taken : {{i.test_timetaken}} Sec</strong></div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 ques_height"><strong>Question</strong></div>
+									<div class="col-md-4 ques_height"><strong>Submitted Answer</strong></div>
+									<div class="col-md-4 ques_height"><strong>Correct Answer</strong></div>
+								</div>
+							</div>
+							<div>
+								{% for a in i.ans_records %}
+								<div class="row">
+									<div class="col-md-4 ques_height">{{a.question}}</div>
+									<div class="col-md-4 ques_height">{{a.submitted_answer}}</div>
+									<div class="col-md-4 ques_height">{{a.correct_answer}}</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div> 
+						<br>
+					{% endfor %}
+				{% endfor %}
+				<h2 style="color:#2baab1;">Assignment</h2>
+				{% for assign in assigns %}
+					<div>
+						<div>
+							<div class="row">
+								<div class="col-md-3 ques_height"><strong>Attemp : <span class="color{{ forloop.counter }}">{{ forloop.counter }}</span></strong></div>
+								<div class="col-md-3 ques_height counter">
+										{% if assign.assign_percent > 80 %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span class="heading-bottom-border" style="color:green">{{assign.assign_percent}} %</span></strong>
+										{% elif assign.assign_percent < 80 and assign.assign_percent > 50 %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span style="color:#2baab1;">{{assign.assign_percent}} %</span></strong>
+										{% else %}
+										<strong><span style="color: #e36159;">Accuracy:</span> <span style="color:red">{{assign.assign_percent}} %</span></strong>
+										{% endif %}
+								</div>
+								<div class="col-md-3 ques_height"><strong style="color: #2baab1;">Time Taken : {{assign.assign_timetaken}} Sec</strong></div>
+								<div class="col-md-3 ques_height"><strong style="color:rgb(90, 162, 90);">Date : {{assign.assign_time}}</strong></div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 ques_height"><strong>Topic</strong></div>
+								<div class="col-md-3 ques_height"><strong>Question</strong></div>
+								<div class="col-md-3 ques_height"><strong>Submitted Answer</strong></div>
+								<div class="col-md-3 ques_height"><strong>Correct Answer</strong></div>
+							</div>
+						</div>
+						{% for i in assign.ans_records %}
+							<div class="row">
+								<div class="col-md-3 ques_height">{{i.topic}}</div>
+								<div class="col-md-3 ques_height">{{i.question}}</div>
+								<div class="col-md-3 ques_height">{{i.submitted_ans}}</div>
+								<div class="col-md-3 ques_height">{{i.correct_ans}}</div>
+							</div>
+						{% endfor %}
+						<br>
+					</div>
+				{% endfor %}
+	{% endblock %}
+	</div>
+	</div>
+	</div>
+	</div>
+</div>

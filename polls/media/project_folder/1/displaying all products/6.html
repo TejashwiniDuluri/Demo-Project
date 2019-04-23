@@ -1,0 +1,150 @@
+<p>
+    <strong>Displaying all products</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Creating a view for displaying all products .
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is to get all the product objects and send
+    context object to template .
+</p>
+<p>
+    <strong> Hint : </strong>
+</p>
+<p>
+    <strong> </strong>
+    Retrieve all the products using following Query and send the list as
+    context
+</p>
+<p>
+    <strong> Model.objects.all()</strong>
+</p>
+<p>
+    <strong> Code : </strong>
+</p>
+<p>
+    <strong> </strong>
+    def ProductsList ( request ) :
+</p>
+<p>
+    prod_list = Products.objects.all()
+</p>
+<p>
+    context = {‘ prod_list ’ : prod_list}
+</p>
+<p>
+    return render (request , ‘orders / procucts.html’ , context )
+</p>
+<ul>
+    <li>
+        <p>
+            <strong>
+                writing an url for associated View (all products) .
+            </strong>
+        </p>
+    </li>
+</ul>
+<p>
+    On requesting this url it will send a request to the all products view ,
+    inturn view will send the required context to template .
+</p>
+<p>
+    <strong>Hint : </strong>
+</p>
+<p>
+    import the view from views .py and link it to url
+</p>
+<p>
+    <strong>Code :</strong>
+</p>
+<p>
+    from order . Views import ProductList
+</p>
+<p>
+    url (‘products’ , views.ProductList , name = ‘ products ’ )
+</p>
+<ul>
+    <li>
+        <p>
+            <strong>
+                Creating a template to display all products list(All products
+                list).
+            </strong>
+        </p>
+    </li>
+</ul>
+<p>
+    This template will be linked to the above (all products )view and gets
+    context objects as response from view and displays all the products details
+    .
+</p>
+<p>
+    <strong>Hint : </strong>
+</p>
+<p>
+    Recieves context object productList from view as prod_list
+</p>
+<p>
+    <strong>code : </strong>
+</p>
+<p>
+    &lt; table &gt;
+</p>
+<p>
+    &lt; tr &gt;
+</p>
+<p>
+    &lt; th &gt; ID &lt; /th &gt;
+</p>
+<p>
+    &lt; th &gt; Product Name &lt; /th &gt;
+</p>
+<p>
+    &lt; th &gt; Product Details &lt; /th &gt;
+</p>
+<p>
+    &lt; th &gt; Price &lt; /th &gt;
+</p>
+<p>
+    &lt; th &gt; Buttons &lt; /th &gt;
+</p>
+<p>
+    &lt; / tr &gt;
+</p>
+<p>
+    &lt; tbody &gt;
+</p>
+<p>
+    { % for product in prod_list %}
+</p>
+<p>
+    &lt; tr &gt;
+</p>
+<p>
+    &lt; td &gt;{{ product.id }}&lt;/td&gt;
+</p>
+<p>
+    &lt;td&gt;{{ product.product_name }}&lt;/td&gt;
+</p>
+<p>
+    &lt;td&gt;{{ product.product_details }}&lt;/td&gt;
+</p>
+<p>
+    &lt;td&gt;{{ product.price }}&lt;/td&gt;
+</p>
+<p>
+&lt; td &gt; &lt;a href="{% url 'delete_product' product.id %}" &lt;    <em>a &gt; &lt;</em> /td &gt;
+</p>
+<p>
+    &lt; / tr &gt;
+</p>
+<p>
+    &lt; /tbody &gt;
+</p>
+<p>
+    &lt;table&gt;
+</p>

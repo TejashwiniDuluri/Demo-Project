@@ -1,0 +1,180 @@
+{% extends 'home.html' %} 
+
+{%block content %}
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-10">
+<div class="featured-box featured-box-primary text-center mt-10">
+	<div class="box-content ">
+		<div class= "col text-center">
+			<h3 class="heading-primary">Details</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-9"></div>
+				<div class="col-md-3" style="text-align: right;">
+					<p>{{student.username}}</p>			
+					<p>{{student.phone_number}}</p>
+					<p>{{student.email}}</p>
+					<p>{{student.location}}</p>
+					<p>{{student.address}}</p>
+				</div>
+		
+		</div>
+
+		<!--================================= tables start=========================================-->
+		
+		
+			{% for coursekey in data %}
+				{% for key, value in coursekey.items %}
+		<br>
+		<div>
+			<h2 style="text-align: left;"><strong>{{key}}</strong></h2>
+			<p><strong>Assessment Score</strong></p>
+		</div>
+	<!--========================================start of assessment table========================================-->
+
+					<table class="table table-hover table-bordered">
+			        	<thead>
+			        		<tr>
+			        			
+			        			<th>Topic</th>
+			        			<th>Test</th>
+			        			<th>Test-Time</th>
+			        			<th>Time-Taken</th>
+			        			<th>Score</th>
+		        			</tr>
+			        	</thead>
+			        	<tbody>
+			        		{% for i in value.assessments %}
+				        		
+				        		<tr>
+				        			
+				        			<td><span>{{i.topic}}</span></td>
+				        			<td><span>{{i.test}}</span></td>
+				        			<td>{{i.test_time}}</td>
+				        			<td>{{i.timetaken}}</td>
+				        			<td>{{i.percentage}}</td>
+				        			
+				        		</tr>
+				        		
+			        		{% endfor %}
+			        	</tbody>
+			        </table>
+	<!--===========================================end of assessments ============================================-->
+		<div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                     <p style="color: green;">Total Tests : {{value.total_tests}}</p>  
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                     <p style="color: orange;">Attempts made : {{value.attempted_tests}}</p>  
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                     <p style="color: red;">Score : {{value.with_repetition_test_score|floatformat:1}}%</p>  
+                </div>
+            </div>
+        </div>
+	<!--=======================================end of attempted total===========================================-->
+			<br>
+			<p><strong>Assignment Score</strong></p>
+	        <table class="table table-hover table-bordered">
+	        	<thead>
+	        		<tr>
+	        			
+	        			<th>chapter</th>
+	        			<th>Assignment-Time</th>
+	        			<th>Time-Taken</th>
+	        			<th>Score</th>
+        			</tr>
+	        	</thead>
+	        	<tbody>
+		        		{% for i in value.assignments %}
+		        		<tr>
+		        			
+		        			<td><span>{{i.chapter}}</span></td>
+		        			<td><span>{{i.assignment_time}}</span></td>
+		        			<td>{{i.timetaken}}</td>
+		        			<td>{{i.percentage}}</td>
+		        			
+		        		</tr>
+		        		{% endfor %}
+	        	</tbody>
+	        </table>
+	<!--======================================== end of assignments table===================================--> 
+		<div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                     <p style="color: green;">Total Assignments : {{value.total_assignments}}</p>  
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                     <p style="color: orange;">Attempts made : {{value.attempted_assignments}}</p>  
+                </div>
+            </div>
+            <div class="col-md-4">
+				<div class="card">
+                     <p style="color: red">Score: {{value.with_repetition_assi_score|floatformat:1}}%</p>  
+                </div>
+            </div>
+        </div>
+        <br>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="/course_report/{{value.course}}" style="width: 100%;" class="btn btn-outline btn-primary">View in Detail</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/employer_task_create/{{student.id}}" style="width: 100%;" class="btn btn-outline btn-secondary">Assign Task</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/shortlist_students/{{student.id}}/{{value.course}}" style="width: 100%;" class="btn btn-outline btn-secondary">Shortlist Student</a>
+			</div>
+    	</div>
+        
+	<!--======================================== end of attempted and total table=================================-->		
+        		{% endfor %}
+			{% endfor %}
+			
+
+	<!--========================================end of table for loops========================================-->
+		<br>
+		<div class="row">
+			<h2><strong>Shortlisted </strong></h2>
+			<table class="table table-hover table-bordered">
+	        	<thead>
+	        		<tr>
+	        			
+	        			<th>sno</th>
+	        			<th>Time</th>
+	        			<th>Employer</th>
+	        			<th>Course</th>
+        			</tr>
+	        	</thead>
+	        	<tbody>
+		        		{% for i in shortlisted %}
+		        		<tr>
+		        			
+		        			<td><span>{{forloop.counter}}</span></td>
+		        			<td><span>{{i.time}}</span></td>
+		        			<td>{{i.employer.username}}</td>
+		        			<td>{{i.course}}</td>
+		        			
+		        		</tr>
+		        		{% endfor %}
+	        	</tbody>
+	        </table>
+	    </div>
+
+
+
+	<!--========================================shortlisted ============================================-->
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="featured-box featured-box-primary text-left mt-5">
+	<div class="box-content">
+		<form action="/assign_result/" method="POST" id="{{chap.id}}">{% csrf_token %}
+			<div class="row">
+				<div class="col s8 m8 l8"></div>
+				<div class="col s2 m2 l2 timer">
+					<input id="timer" name="times" type="hidden" value=""/>
+					<input name="id" type="hidden" value="{{chap.id}}"/></div>
+				<div class="col s2 m2 l2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 offset-md-2 assignmentClass">
+				<h3 class="heading-primary text-uppercase mb-3">Assignment</h3>
+				<br>
+					{% for i in qns %}
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							<p><strong>{{i.ques}}</strong></p>
+							<div class="ansDiv">
+								{% for answer in i.answer_set.all%}
+								<p>
+									<label>
+										<input type="radio" name="{{i.id}}" value="{{answer.id}}"/>		
+										<span>{{answer.ans}}</span>
+									</label>
+								</p>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<br>
+					<br>
+					<div class="row">
+						<div class="col-md-6 offset-md-3 testSubmit">
+							<button class="btn btn-outline btn-primary mb-2" type="submit">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

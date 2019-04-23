@@ -1,0 +1,51 @@
+{% extends 'home.html' %} 
+
+{%block content %}
+
+<div class="featured-box featured-box-primary text-center mt-5">
+	<div class="box-content text-center">
+		<div class= "col text-center">
+			<h3 class="heading-primary">CART</h3>
+			<div class="row">
+				{% if cart_items %}
+				<table class="table table-hover table-bordered">
+		        	<thead>
+		        		<tr>
+		        			<th>User</th>
+		        			<th>Course</th>
+		        			<th>DateTime</th>
+		        			<th>Delete</th>
+		        			<th>CheckOut</th>
+	        			</tr>
+		        	</thead>
+		        	<tbody>
+			        		{% for item in cart_items %}
+			        		<tr>
+			        			<td><span>{{item.user.username}}</span></td>
+			        			<td><span>{{item.course}}</span></td>
+			        			<td><span>{{item.time}}</span></td>
+			        			<td><a href="/cart_item_delete/{{item.id}}" class="btn btn-outline btn-primary">Delete</a></td>
+			        			{% if ssh_key %}
+			        			<td><a href="/cart_checkout/{{item.id}}" class="btn btn-outline btn-primary">Proceed to Checkout</a></td>
+			        			{% else %}
+			        				<td><a href="/ssh/" class="btn btn-outline btn-primary">provide ssh key</a></td>
+			        			{% endif %}
+
+			        		</tr>
+			        		{% endfor %}
+		        	</tbody>
+		        </table>
+        		{% else %}
+					<div class= "text-center center col-md-12">
+	        			<h1 >No Items In Cart</h1>
+	        		</div>
+	    </div>
+	</div>
+</div>
+
+		    </div>
+				{% endif %}
+
+{% endblock %}
+
+

@@ -1,0 +1,87 @@
+{% extends 'home.html' %}
+{% block content %}
+<style type="text/css">
+.j{
+	border-style: solid;
+	width:690px;
+	height:40px;
+	background-color: #e6e6e6; 
+	border-color: #e6e6e6;
+	border-radius: 10px;
+}
+
+.j:hover {
+  outline: 0px solid transparent;
+  width:690px;
+  height:40px;
+  border: 2px solid #008ae6;
+  background-color: #f2f2f2; 
+}
+
+ 
+
+</style>
+<div class="featured-box featured-box-primary text-left mt-5">
+	<div class="box-content">
+		<form action="/testcal/" method="POST" id="{{test.id}}">{% csrf_token %}
+			<div class="row">
+				<div class="col s8 m8 l8"></div>
+				<div class="col s2 m2 l2 timer">
+					<input id="timer" name="times" type="hidden" value=""/>
+					<input name="id" type="hidden" value="{{test.id}}"/></div>
+					<input type="hidden" name="total_questions", value="{{total_questions}}">
+				<!-- <div class="col s2 m2 l2"></div> -->
+			</div>
+			<div class="sticky testClass">
+			<h3 class="" style="text-align:center;color:#008ae6">Test : {{test.name}}</h3>
+			</div>
+			<div class="row content">
+				<div class="col-md-12" >
+				
+				<br>
+
+					{% for question in questions %}
+					
+						<div class="row">
+						<div class="col-md-2"></div>
+							<div class="col-md-8 " >
+
+							
+								<pre style="white-space: pre-wrap;font-size:15px;border-style:groove;padding:10px;"><strong>{{forloop.counter}})&nbsp{{question.ques}}</strong></pre>
+								<div class="ansDiv">
+									{% for answer in question.answer_set.all%}
+									<p>
+									
+										<label class="j" >
+										
+											<input type="radio" name="{{question.id}}" value="{{answer.id}}"/>		
+											<span style="font-family:verdana;font-size:18px;color:black;">{{answer.ans}}</span>
+											
+										</label>
+									
+									</p>
+
+									{% endfor %}
+									<br/><br/><br/>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 "></div>
+					{% endfor %}
+					<div class="row">
+					<div class="col-md-4"></div>
+					<div class="row">
+						<div class="col-md-6 offset-md-3 testSubmit">
+							<button class="btn btn-outline btn-primary mb-2" type="submit">Submit</button>
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	</div>
+{% endblock %}

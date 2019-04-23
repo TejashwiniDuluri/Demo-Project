@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% block content %}
+<script type="text/javascript" src="/static/js/angular.min.js"></script>
+<script type="text/javascript" src="/static/js/pin.js"></script>
+<!-- <script src="/static/assets/node_modules/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/morris-data.js"></script> -->
+<div ng-app = "myApp"  class="">
+<div class="block" ng-controller="MainCtrl">
+<div class="block">
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <h1>Create Assignment</h1>
+            
+        </div>
+        <form action="/assignment_create/" method="post" enctype="multipart/form-data" ng-init="courseData()">{% csrf_token %}
+                
+
+                <h4>Course</h4>
+                <select ng-model="course" id="course" name="course" class="form-control" ng-change="courseData()">
+                {% for course in courses %}
+                    <option value='{{course.id}}'>{{course.name}}</option>
+                {% endfor %}
+                </select>
+                <!-- {% verbatim %} -->
+                <h4>Chapter </h4>
+                
+                <select ng-model="chapt" id=chapterselected name="chapt" class="form-control"  >
+                    <option ng-repeat='chapt in chapterslist'   value={{chapt.id}}>{{chapt.name}}</option>
+                </select>
+                
+                <!-- {% endverbatim %} -->
+                <br>
+                <h4>Question</h4>
+                    <textarea name="question" class="form-control"></textarea>
+                <br/>
+                <h4>Code</h4>
+                <!-- <textarea type="text" name="code"  class="form-control"></textarea> -->
+                <br/>
+                <textarea id="vdt_table_textarea" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" type="text" name="code"  class="form-control">
+                </textarea>
+                <br/>
+                <h4>Steps(comma saperated in a list)</h4>
+                    <textarea name="steps" class="form-control"></textarea>
+                <br/>
+                <h4>topic_tag(comma saperated in a list)</h4>
+                    <textarea name="topic_tag" class="form-control"></textarea>
+                <br/>
+                <h4>Keywords</h4>
+                    <textarea name="keywords" class="form-control"></textarea>
+                <br/>
+                <h4>input_list(comma saperated in a list)</h4>
+                    <textarea name="input_list" class="form-control"></textarea>
+                <br/>
+                <h4>output_list(comma saperated in a list)</h4>
+                    <textarea name="output_list" class="form-control"></textarea>
+                <br/>
+                <input type="submit" value="submit"  class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+
+{% endblock %}

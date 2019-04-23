@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block content %}
+<h1>Projects</h1>
+<div class="row">
+	{% for project in projects %}
+	<div class="col-12 col-md-3 col-md-2 isotope-item Backend" style="position: left:0px; top: 0px;">
+	  <span class="thumb-info thumb-info-hide-wrapper-bg md-4">
+	    <span class="thumb-info-wrapper">
+	      <a href="/project_milestones/{{project.id}}/">
+	        <img src="/static/images/{{project.tag_name}}.png" class="img-fluid" alt="">
+	          <span class="thumb-info-title">
+	            <span class="thumb-info-inner">{{project.name}}</span>
+	          </span>
+	      </a>
+	    </span>
+	    <span class="thumb-info-caption">
+	  </span>
+	</span>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

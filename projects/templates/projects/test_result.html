@@ -1,0 +1,55 @@
+{% extends 'home.html' %} 
+{% block content %}
+<div class="featured-box featured-box-primary text-center mt-5">
+        <div class="box-content center">
+                <div class= "col text-center">
+                <h2 style="color:green">Report</h2>
+                <div class="row">
+                {% if test_sub_data %}
+                        <div class="col-md-12 center">
+                                <div class=" center">
+                                        <div class="timline center">
+                                                <h3>Test Name:{{ test_sub_data.test_test}}</h3>
+                                                <p>Answer Accuracy: {{test_sub_data.test_percent}}%</p>
+                                                <p>Time Taken: {{test_sub_data.test_timetaken |floatformat}} Seconds</p>
+
+                                        <table class="table table-hover table-bordered">
+                                                <thead>
+                                                        <tr>
+                                                                <th>S.NO </th>
+                                                                <th>Question</th>
+                                                                <th>Submitted Answer</th>
+                                                                <th>Correct Answer</th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                                {% for data in test_sub_data.ans_records %}
+
+                                                        <tr>
+                                                                <td>{{forloop.counter}}</td>
+                                                                <td><span>{{data.question}}</span></td>
+                                                                <td><span>{{data.submitted_answer}}</span></td>
+                                                                {% if data.submitted_answer == data.correct_answer%}
+                                                                <td class="correctAnswer">
+                                                                  <span>{{data.correct_answer}}</span>
+                                                                </td>
+                                                                        {% else %}
+                                                                <td class="wrongAnswer">
+                                                                    <span>{{data.correct_answer}}</span>
+                                                                </td>
+                                                                        {% endif %}
+                                                        </tr>
+                                                                {% endfor %}
+                                                </tbody>
+                                        </table>
+                                        </div>
+                                </div>
+                                </div>
+                
+                {% endif %}
+                
+                </div>
+                </div>
+        </div>
+</div>
+{% endblock %}

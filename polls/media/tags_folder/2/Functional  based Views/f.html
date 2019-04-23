@@ -1,0 +1,249 @@
+<p>
+    <code><strong>6</strong></code>
+    <code><strong> . Functional based Views</strong></code>
+</p>
+<ol type="I">
+    <li>
+        <p>
+            <code><strong>Sending HttpResponse </strong></code>
+        </p>
+        <ol type="a">
+            <p>
+                <code>
+                    <strong>from django.http import HttpResponse</strong>
+                </code>
+            </p>
+            <ol type="a">
+                <p>
+                    <code>def function_name ( request ):</code>
+                </p>
+                <ol type="a">
+                    <ol type="a">
+                        <p>
+                            <code># logic follows</code>
+                        </p>
+                    </ol>
+                    <p>
+                        <code>return HttpResponse( ‘ message’)</code>
+                    </p>
+                </ol>
+            </ol>
+        </ol>
+    </li>
+</ol>
+<ol type="I" start="2">
+    <li>
+        <p>
+            <code><strong>Sending Json Response</strong></code>
+        </p>
+        <ol type="a">
+            <p>
+                <code>
+                    <strong>from django.http import JsonResponse</strong>
+                </code>
+            </p>
+            <ol type="a">
+                <p>
+                    <code>def function_name ( request ) :</code>
+                </p>
+                <ol type="a">
+                    <ol type="a">
+                        <p>
+                            <code># logic follows</code>
+                        </p>
+                    </ol>
+                    <p>
+                        <code>return JsonRespnse (</code>
+                        <code>context , safe = false</code>
+                        <code>)</code>
+                    </p>
+                    <p>
+                        <code>
+                            <br/>
+                        </code>
+                    </p>
+                </ol>
+            </ol>
+        </ol>
+    </li>
+</ol>
+<ol type="I" start="3">
+    <li>
+        <p>
+            <code> </code>
+            <code>
+                <strong>Rendering Context objects to templates</strong>
+            </code>
+        </p>
+    </li>
+</ol>
+<p>
+    <code> </code>
+    <code><strong>from django.shortcuts import render</strong></code>
+</p>
+<p>
+    <code> </code>
+    <code>def function_name ( request ) :</code>
+</p>
+<p>
+    <code> </code>
+    <code># logic follows</code>
+    <code> </code>
+</p>
+<p>
+    <code> </code>
+    <code>context = {“key” : value}</code>
+</p>
+<p>
+    <code> </code>
+    <code>return render (request , ‘ sample.html ’ , </code>
+    <code>context </code>
+    <code>)</code>
+</p>
+<ol type="I" start="4">
+    <li>
+        <p>
+            <code> </code>
+            <code><strong>Functional based view with </strong></code>
+            <code><strong> </strong></code>
+            <code><strong>argument</strong></code>
+        </p>
+    </li>
+</ol>
+<p>
+    <code> </code>
+    <code>def function_name (request , arg ):</code>
+</p>
+<p>
+    <code> </code>
+    <code># logic follows</code>
+</p>
+<p>
+    <code> </code>
+    <code>return render ( request, “ sample.html ” , context)</code>
+</p>
+<ol type="I" start="5">
+    <li>
+        <p>
+            <code><strong>Function based view for form </strong></code>
+            <code><strong>loading and saving form .</strong></code>
+        </p>
+        <ol type="a">
+            <p>
+                <code> </code>
+                <code><strong>f</strong></code>
+                <code><strong>rom . fo</strong></code>
+                <code><strong>r</strong></code>
+                <code><strong>ms import </strong></code>
+                <code><strong> SampleForm </strong></code>
+            </p>
+        </ol>
+    </li>
+</ol>
+<p>
+    <code> </code>
+    <code>def function_name ( request ) :</code>
+</p>
+<p>
+    <code> if request.method == ‘ POST ’ :</code>
+</p>
+<p>
+    <code> form = SampleForm(request.</code>
+    <code>POST</code>
+    <code>)</code>
+</p>
+<p>
+    <code> </code>
+    <code>if form.is_valid( ):</code>
+</p>
+<p>
+    <code> form.save( )</code>
+</p>
+<p>
+    <code> return redirect (‘ url name’)</code>
+</p>
+<p>
+    <code> </code>
+    <code>else :</code>
+</p>
+<p>
+    <code> form = SampleForm( )</code>
+</p>
+<p>
+    <code> context = {‘form’ : form}</code>
+</p>
+<p>
+    <code> </code>
+    <code>return render (request , ‘ form.html’ , context)</code>
+</p>
+<p>
+    <code><strong>Note :</strong></code>
+</p>
+<p>
+    <code> </code>
+    <code>
+        The above code snippet checks for the POST request , if the request is
+        not POST , then it loads the form using specified template ,
+    </code>
+    <code>empty form as context </code>
+    <code>.</code>
+</p>
+<ol type="I">
+    <li>
+        <p>
+            <code> </code>
+            <code><strong>Urls for function based views </strong></code>
+        </p>
+        <ol type="a">
+            <p>
+                <code><strong>-- </strong></code>
+                <code>Url without argum</code>
+                <code>e</code>
+                <code>nt .</code>
+            </p>
+        </ol>
+    </li>
+</ol>
+<p>
+    <code> </code>
+    <code>u</code>
+    <code>rl( </code>
+    <code>r </code>
+    <code>‘</code>
+    <code>^</code>
+    <code> url_name </code>
+    <code>$</code>
+    <code>’ , </code>
+    <code>views.view_name , </code>
+    <code>name = ‘ name ’</code>
+    <code> ) ,</code>
+</p>
+<p>
+    <code> </code>
+    <code><strong>-- </strong></code>
+    <code>Url with argum</code>
+    <code>e</code>
+    <code>nt .</code>
+</p>
+<p>
+    <code> </code>
+</p>
+<p>
+    <code> </code>
+    <code>Url ( </code>
+    <code>r </code>
+    <code>‘ </code>
+    <code>^ </code>
+    <code>url_name / argument </code>
+    <code>$</code>
+    <code>’ , </code>
+    <code>views.view_name , name = ‘ name’</code>
+    <code>) ,</code>
+</p>
+<ol type="I">
+    <ol type="a" start="0">
+        <p>
+            <code> </code>
+        </p>
+    </ol>
+</ol>

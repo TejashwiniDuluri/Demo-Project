@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10" style="text-align:center;"">
+		<h4><strong>Active Courses</strong></h4>
+		{% for cour in active %}
+			<br/>
+            <div class="col-12 col-md-3 col-md-2 isotope-item Backend" style=" left:0px; top: 0px;">
+              <span class="thumb-info thumb-info-hide-wrapper-bg md-4" >
+                <span class="thumb-info-wrapper">
+                  <a href="/course/{{cour.course.id}}/">
+                    <img src="/static/images/{{cour.course.name}}.png"  class="img-fluid" height="80px" width="80px" " alt="">
+                      <span class="thumb-info-title">
+                        <span class="thumb-info-inner">{{cour.course.name}}</span>
+                      </span>
+                  </a>
+                </span>
+                <span class="thumb-info-caption">
+                <span class="thumb-info-social-icons">
+                  <a target="_blank" href="http://www.facebook.com"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+                  <a href="http://www.twitter.com"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                  <a href="http://www.linkedin.com"><i class="fab fa-linkedin-in"></i><span>Linkedin</span></a>
+                </span>
+              </span>
+            </div>
+          {% endfor %}
+          
+     	</span>
+     	</div>
+     	<div class="col-md-1"></div>
+    </div>
+ 	</div>
+{% endblock %}

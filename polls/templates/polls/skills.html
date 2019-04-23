@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container">
+	<div class="col-lg-3">
+		<h3 class="heading-primary">Skills Report</h3>
+	</div>
+	<ul class="list list-icons list-icons-style-3 list-icons-sm">
+		{% for skill in skills %}
+			<li><i class="fas fa-check"></i> &nbsp; {{skill}}</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

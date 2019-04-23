@@ -1,0 +1,212 @@
+/* Add here all your CSS customizations */
+.dividercus{
+	width: 2px;
+	background-color: gray;
+}
+.inbox{
+	table-layout: fixed;
+	min-height: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+.outbox{
+	table-layout: fixed;
+	min-height: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+.spacer10{
+	min-height: 10px;
+}
+
+
+
+.ques_height{
+	min-height: 50px;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+
+}
+
+.color1{
+	color:rgb(49, 222, 49);
+}
+
+.color2{
+	color:#2baab1;
+}
+.color3{
+	color:#e36159;
+}
+
+#home-divider{
+	margin-right: 20%;
+	margin-left: 20%;
+}
+.courses-row {
+    line-height: 100px;
+    border-bottom: black 1px solid;
+}
+
+.course{
+	border-left: black 1px solid; 
+}
+
+.mycolor{
+	color: white;
+}
+
+.mybtn{
+	margin-top: 20%;
+}
+
+.depth{
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.course-btn:hover{
+	text-decoration: none;
+}
+
+.my-course-name{
+	padding-left: 11%;
+}
+
+.progress-bars{
+	width: 80%;
+}
+
+.content{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.col-md-cus-21{
+	float: left;
+	width: 21%;
+	min-height: 680px;
+}
+
+.col-md-cus-50{
+	float: left;
+	width: 50%;
+	min-height: 680px;
+	max-height: 1000px;
+	padding-right: 1%;
+	padding-left: 1%;
+	overflow: hidden;
+}
+
+.col-md-cus-29{
+	float: left;
+	width: 29%;
+	min-height: 600px;
+}
+
+#run{
+	margin-top: 1%;
+}
+
+textarea#code {
+    background-color: #1f374e;
+    color: white;
+}
+
+#re{
+	/*min-height: 20%;*/
+	height: 100px;
+	max-height: 20%;
+}
+.compiler{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+
+.leftMenu{
+	padding-left: 10%;
+}
+
+#footer{
+	border-top: 1px solid #DDD;
+	height: 100px;
+}
+
+.rowCus{
+	padding-bottom: 2%;
+	height: 680px;
+}
+
+
+
+.contentProjector{
+	overflow: hidden;
+}
+
+.main{
+	min-height: 680px;
+	max-height: 1000px;
+}
+
+.containerCus{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.containerCus1{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.activeCus{
+	background-color: lightgray;
+}
+
+button#compiler{
+	margin-top: 5px;
+	height: 25px;
+	padding-top: 0px;
+	margin-left: 5px; 
+}
+
+#programErr{
+	background-color:  red;
+	color: white;
+}
+#programRe{
+	background-color: lightblue;
+	color: black;
+}
+
+div.complerResult{
+	height:150px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.correctAnswer{
+	color: #17672d;
+	/* color: white; */
+}
+
+.wrongAnswer{
+	color: #e36159;
+	/* color: white; */
+}
+.j{
+	border-style: ridge;
+	width:500px;
+	height:40px;
+	border-color:lightblue;
+}
+
+.j:hover {
+  outline: 0px solid transparent;
+  width:500px;
+  height:40px;
+  border: 2px solid orange;
+}
+

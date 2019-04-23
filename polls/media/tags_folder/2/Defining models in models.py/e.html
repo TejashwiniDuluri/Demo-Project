@@ -1,0 +1,61 @@
+<p>
+    <strong>5 . Defining models in models.py</strong>
+</p>
+<p>
+    <strong> from django.db import models</strong>
+</p>
+<p>
+    Class Employee (models.Model ) :
+</p>
+<p>
+    name = models.CharField(max_length = 20)
+</p>
+<p>
+    age = models. IntegerField ( default=0 )
+</p>
+<p>
+    address = models.TextField ( )
+</p>
+<p>
+    def __ str __ ( self ) :
+</p>
+<p>
+    return self .name
+</p>
+<p>
+    <strong> </strong>
+    <strong>Field Types</strong>
+    :
+</p>
+<p>
+    <strong> String or Character </strong>
+    : model.CharField ( max_length = 20)
+</p>
+<p>
+    <strong> </strong>
+    <strong>Integer </strong>
+    : models.IntegerField( default = 0)
+</p>
+<p>
+    <strong> True or False </strong>
+    : models.BooleanField ( )
+</p>
+<p>
+    <strong> Text</strong>
+    : models.TextField ( )
+</p>
+<p>
+    <strong> Floating Numbers</strong>
+    : models.FloatField ( default = 0.0)
+</p>
+<p>
+    <strong> Decimal numbers : </strong>
+    models.<code>DecimalField(max_digits = 20 , decimal places = 4)</code>
+</p>
+<p>
+    <code><strong> </strong></code>
+    <code><strong>ForeignKey : </strong></code>
+    <code>
+        models.ForeignKey ( ‘model_name’ , on_delete = models.CASCADE )
+    </code>
+</p>

@@ -1,0 +1,88 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div>
+            
+            <h2>Create Answers</h2>
+            
+        </div>
+        <form action="/qns_ans/" method="post" enctype="multipart/form-data">{% csrf_token %}
+            
+            <input type="hidden" id="ques.id" name=ques_id value="{{ques.id}}" >
+            
+                <h4>Answer-1</h4>
+                <input type="text" name="answer1" class="form-control">
+                <div class="form-row">
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox1" type="checkbox" name="checkbox1">
+                    <label for="checkbox1"> Correct</label>
+                </div>
+                </div>
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox2" type="checkbox" name="checkbox2">
+                    <label for="checkbox1">Wrong</label>
+                </div>
+                </div>
+                <br/>
+                <h4>Answer-2</h4>
+                <input type="text" name="answer2" class="form-control">
+                <div class="form-row">
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox3" type="checkbox" name="checkbox3">
+                    <label for="checkbox3"> Correct</label>
+                </div>
+                </div>
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox4" type="checkbox" name="checkbox4">
+                    <label for="checkbox4">Wrong</label>
+                </div>
+                </div>
+                <br/>
+                <h4>Answer-3</h4>
+                <input type="text" name="answer3" class="form-control">
+                <div class="form-row">
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox5" type="checkbox" name="checkbox5">
+                    <label for="checkbox5"> Correct</label>
+                </div>
+                </div>
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox6" type="checkbox" name="checkbox6">
+                    <label for="checkbox6">Wrong</label>
+                </div>
+                </div>
+                <br/>
+                <h4>Answer-4</h4>
+                <input type="text" name="answer4" class="form-control">
+                <div class="form-row">
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox7" type="checkbox" name="checkbox7">
+                    <label for="checkbox7"> Correct</label>
+                </div>
+                </div>
+                <div class="form-group col-lg-6">
+                <div class="checkbox checkbox-success">
+                    <input id="checkbox8" type="checkbox" name="checkbox8">
+                    <label for="checkbox8">Wrong</label>
+                </div>
+                </div>
+                <br/>
+                
+                <input type="submit" value="submit" class="btn btn-primary" >
+        </form>
+    </div>
+    
+</div>
+</div>
+</div>
+
+{% endblock %}

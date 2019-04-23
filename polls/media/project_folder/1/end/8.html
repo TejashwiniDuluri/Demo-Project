@@ -1,0 +1,411 @@
+<p>
+    <strong>Creating New Order</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating a view to create new order .
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is to load the form template and receives the
+    form data and then saves data to database .
+</p>
+<p>
+    <strong> Hint : </strong>
+</p>
+<p>
+    import the <strong>OrderForm</strong> from forms.py to load and save form
+    data
+</p>
+<p>
+    <strong>code :</strong>
+</p>
+<p>
+    <strong> </strong>
+    def new_order( request ):
+</p>
+<p>
+    if request.method == ‘POST’:
+</p>
+<p>
+    form = OrderForm(request.POST)
+</p>
+<p>
+    if form.is_valid() :
+</p>
+<p>
+    form.save( )
+</p>
+<p>
+    return redirect ( ‘ orders ’)
+</p>
+<p>
+    else :
+</p>
+<p>
+    form = OrderForm( )
+</p>
+<p>
+    if form.errors :
+</p>
+<p>
+    errors = form .errors
+</p>
+<p>
+    context = {‘form’ : form , ‘ errors’: error}
+</p>
+<p>
+    return render (request , ‘ new_order.html ’ , context )
+</p>
+<ul>
+    <li>
+        <p>
+            Writing an url for associated view (add order) .
+        </p>
+    </li>
+</ul>
+<p>
+    This url sends request object to associated view .
+</p>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    import new_order view from views.py
+</p>
+<p>
+    <strong>code :</strong>
+</p>
+<p>
+    url ( ‘new_order ’ ,views.new_order , name = ‘new_order’) ,
+</p>
+<ul>
+    <li>
+        <p>
+            Create a form using model .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Hint : </strong>
+</p>
+<p>
+    import order model from model.py
+</p>
+<p>
+    <strong> code:</strong>
+</p>
+<p>
+    <strong> </strong>
+    class OrderForm( ModeForm ) :
+</p>
+<p>
+    class Meta :
+</p>
+<p>
+    model = Order
+</p>
+<p>
+    fields = [ ‘name’ , ‘phone_number’ , ‘address’ , ‘product’ , ‘
+    payment_option’ , ‘ Quantity ‘ ]
+</p>
+<p>
+    <strong> </strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating form template to create new order .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+form will generate the html to save data by placing simply    <strong>{{form.as_p}} </strong>in the template .
+</p>
+<p>
+    --&gt; <strong>Form contains</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Name .
+        </p>
+    </li>
+    <li>
+        <p>
+            phone number .
+        </p>
+    </li>
+    <li>
+        <p>
+            Address .
+        </p>
+    </li>
+    <li>
+        <p>
+            Product .
+        </p>
+    </li>
+    <li>
+        <p>
+            payment_option
+        </p>
+    </li>
+    <li>
+        <p>
+            Quantity
+        </p>
+    </li>
+</ul>
+<p>
+    <strong> </strong>
+</p>
+<p>
+    <strong> code :</strong>
+</p>
+<p>
+    <strong> </strong>
+    &lt;form method = POST &gt;
+</p>
+<p>
+    {% csrf_token %}
+</p>
+<p>
+    {{ form.as_p }}
+</p>
+<p>
+    &lt;button type="submit" class="btn btn-success"&gt;Submit&lt;/button&gt;
+</p>
+<p>
+    &lt;/form&gt;
+</p>
+<p>
+    <strong>Displaying all orders</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating a view for rendering all oders.
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is to render all orders objects from database
+    and send as context to Template .
+</p>
+<p>
+    <strong>Hint : </strong>
+</p>
+<p>
+    Retrieve all objects from Order model
+</p>
+<p>
+    <strong> Order.objects.all ()</strong>
+</p>
+<p>
+    <strong>code :</strong>
+</p>
+<p>
+    <strong> </strong>
+    def orders ( request ) :
+</p>
+<p>
+    ord_list = Order.objects.all ( )
+</p>
+<p>
+    context = { ‘ord_list ’ : ord_list }
+</p>
+<p>
+    return render (request , ‘orders / orders_list.html’ , context )
+</p>
+<p>
+    Writing an url for associated view (all orders) .
+</p>
+<ul>
+</ul>
+<p>
+    On requesting this url in web browser , a request object will be sent to
+    associated view(all orders view ) .
+</p>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+    <strong> </strong>
+    import orders view from views.py
+</p>
+<p>
+    <strong> </strong>
+</p>
+<p>
+    <strong>Code :</strong>
+</p>
+<p>
+    url (‘orders’ , views.orders , name = ‘orders’ ) ,
+</p>
+<ul>
+    <li>
+        <p>
+            creating template for displaying all orders view(All orders list )
+            .
+        </p>
+    </li>
+</ul>
+<p>
+This template will be at '<strong>app/templates/app/orders_list.html ' </strong>and recieves    <strong>allorders</strong> context object from all orders view .
+</p>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+    create a html template for displaying all orders .
+</p>
+<p>
+    <strong>Updating Order</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating a view to update order .
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is to recieve object id , that object to be
+    updated . And loads the form template to update the order status .
+</p>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+    A function which recieves id as argument and update the order status .
+</p>
+<p>
+    <strong> Code : </strong>
+</p>
+<p>
+    def update_order(request , id ):
+</p>
+<p>
+    order = Order .objects.get(id=id)
+</p>
+<p>
+    if request.method == ‘ POST ’:
+</p>
+<p>
+    form = OrderForm(request.POST)
+</p>
+<p>
+    if form.is_valid():
+</p>
+<p>
+    if form.save():
+</p>
+<p>
+    form.save()
+</p>
+<p>
+    return redirect (‘orders_list’)
+</p>
+<p>
+    else :
+</p>
+<p>
+    form = Orderform ( )
+</p>
+<p>
+    return render (request , ‘ update_order.html’ {‘form’ :form})
+</p>
+<ul>
+    <li>
+        <p>
+            Writing an url for associated view with argument id (update order)
+            .
+        </p>
+    </li>
+</ul>
+<p>
+    This url will recieves object id as arguments and sends id to the view .
+</p>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    It receives the id to the url and sends to the associated view .
+</p>
+<p>
+    <strong>Code :</strong>
+</p>
+<p>
+    <strong>
+        url (‘update_order /id ’, views.update_order , name = update_order )
+    </strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Create template to update order status .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Deleting order</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating a view to delete order .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    This view will gets <strong>object id </strong>as argument and deletes
+    specific order object object.
+</p>
+<p>
+    <strong>code :</strong>
+</p>
+<p>
+    <strong> def destroy_order (request , id ) :</strong>
+</p>
+<p>
+    <strong> Order.objects.get(id = id) . Delete ()</strong>
+</p>
+<p>
+    <strong> return redirect (‘ orders ’)</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Writing a url to delete order with argument (id) .
+        </p>
+    </li>
+</ul>
+<p>
+    This url will get <strong>object id </strong>as argument from all orders
+    template , that object to be deleted . The same id will be sent as
+    parameter to the associated view .
+</p>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+    url with id as argument
+</p>
+<p>
+    <strong> code :</strong>
+</p>
+<p>
+    <strong>
+        url ( ‘delete_order/ id’ , views.delet_order , name = ‘ delete_order ’
+        )
+    </strong>
+</p>

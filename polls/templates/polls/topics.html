@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="row">
+	{% for topic in topics %}
+	    <div class="col s12 m4">
+	      <div class="card card-topic">
+	        <div class="card-content">
+	          <div class="card-title text-center head">{{topic.name}}</div>
+	          <div class="card-desc">
+			        <div class="contents">Contents  :  {{topic.Description}}</div>
+			        <div class="notes">Notes  :  {{topic.notes}}</div>
+			        <div class="card-action">
+			          <a class="btn custom" href="/topic/{{topic.id}}">Lets Get In</a>
+			        </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	{% endfor %}
+	</div>
+	
+{% endblock %}

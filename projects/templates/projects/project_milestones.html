@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+{% load mathfilters %}
+{% block content %}
+	<div class="containerCus1">
+			<h2>Course: <strong>{{project.name}}</strong></h2>
+			
+			<div class="row">
+				<div class="col">
+					<p class="lead">
+						
+					</p>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="toggle toggle-primary mt-4" data-plugin-toggle>
+						{% for milestone in project.milestone_set.all %}
+						<section class="toggle">
+							<label>{{milestone.name}}</label>
+							
+							<div class="toggle-content">
+							<h6><strong>Tags:</strong></h6>
+								{% for tag_name in milestone.tag_name.all %}
+									 <a href="/tag_content/{{tag_name.id}}">{{tag_name}}&nbsp<label style="color:red">||</label></a>
+								{% endfor %}
+								<p><strong>Target to be achieved:</strong> <a href="{{milestone.url}}" style="color:red">{{milestone.url}}</a></p>
+								<a  class="btn btn-outline btn-secondary">upload</a>
+							</div>
+						</section>
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="featured-box featured-box-primary">
+						<div class="box-content">
+							<h4 class="text-uppercase">{{project.name}}</h4>
+							<hr>
+							<ul class="list list-icons text-left">
+								<li><i class="fas fa-clock"></i>Duration : {{project.duration|intdiv:3600}} Hrs</li>
+								<li><i class="fas fa-clipboard"></i>Chapters : {{project.no_of_milestones}}</li>
+								<li><i class="fas fa-question"></i>Prerequisites : {{project.prerequisites}}</li>
+								<li><i class="fas fa-user"></i>Author : {{project.author}}</li>
+								<li><i class="fas fa-keyboard"></i>Type of course : {{project.tag_name}}</li>
+							</ul>
+							{% if registered == None %}
+							<a href="/add_proj_cart/{{project.id}}" class="btn btn-outline btn-primary form-control">Add to Cart</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>	
+			</div>
+	</div>
+{% endblock %}

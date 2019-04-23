@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+{% block content %}
+<!-- <div class="row"> -->
+		<div class="row">
+			<div class="col-md-3">
+				<div class="leftMenu">
+					
+						<h4 class="heading-secondary">Course : <a href="/course/{{topic.chapter.course.id}}"><strong>{{topic.chapter.course}}</strong></a></h4>
+						<h5 class="heading-secondary">Chapter : <a href="/chapt/{{topic.chapter.id}}">{{topic.chapter.name}} </a></h5>
+						<h5>Topics</h5>
+						<ul class="nav nav-list flex-column list-icons list-icons-style-3">
+	
+							{% for top in topic.chapter.topics_set.all %}
+														
+								{% if top.name in last and max != top.name %}
+								
+									<li class="nav-item">
+										<a class="nav-link" href="/topic/{{top.id}}/">{{top}}&nbsp;<i class="fas fa-check"></i></a>
+									</li>
+								{% elif top.name in last and max == top.name %}
+									<li class="nav-item activeCus">
+										<a href="/topic/{{top.id}}/"><i>{{top}}</i></a>
+									</li>
+									
+								{% else %}
+									<li class="nav-item active">
+										<a href="/topic/{{top.id}}/"><i>{{top}}</i></a>
+									</li>
+								{% endif %}
+								
+								
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-md-8">
+				<div class="contentProjector">
+					{{contents|safe}}
+				</div>
+				<div>
+					<video controls width="100%" height="80%">
+						<source src="/media/folder/{{topic.chapter.course.id}}/{{topic.chapter.id}}/{{topic.name}}/video.mp4" type="video/mp4" >
+					</video>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+					    {% if previous_page %}
+					      <a class="btn btn-primary btn-outline form-control" href="/topic/{{previous_page_num}}/">previous</a>
+					    {% endif %}
+					</div>
+					<div class="col-md-4">
+					    {% if tests %}
+				    		{% for test in tests %}
+				    		<a class="btn btn-outline btn-tertiary form-control" href="/test/{{test.id}}">Take a Test</a>
+				    		{% endfor %}
+					    {% endif %}
+				    </div>
+					<div class="col-md-4">
+					    {% if next_page %}
+					      <a class="btn btn-primary btn-outline form-control" href="/topic/{{next_page_num}}/">next</a>
+					    {% endif %}
+					    {% if not next_page %}
+				
+					     	<a class="btn btn-warning btn-outline form-control" href="/assign/{{assign}}/">Take an Assignment</a>
+					    		
+					    {% endif %}
+					</div>
+					</div>
+				</div>
+			
+			<div class="col-md-1"> 
+			
+			</div>
+		</div>
+	
+
+{% endblock %}

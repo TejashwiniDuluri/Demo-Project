@@ -1,0 +1,189 @@
+<p>
+    <code><strong>7 . Creating forms </strong></code>
+    <code><strong>usin</strong></code>
+    <code><strong>g django forms and django model forms .</strong></code>
+</p>
+<ol type="I">
+    <li>
+        <p>
+            <code>Creating Django Form</code>
+        </p>
+    </li>
+</ol>
+<p>
+    <code><strong> Import Statement:</strong></code>
+</p>
+<ol type="I">
+    <ol type="I">
+        <ol type="I">
+            <ol type="I" start="0">
+                <p>
+                    <code>f</code>
+                    <code>rom </code>
+                    <code>django import forms </code>
+                </p>
+            </ol>
+        </ol>
+    </ol>
+</ol>
+<p>
+    <code><strong> Code Reference :</strong></code>
+</p>
+<p>
+    class ContactForm(forms.Form):
+</p>
+<p>
+    subject = forms.CharField(max_length=100)
+</p>
+<p>
+    message = forms.CharField(widget=forms.Textarea)
+</p>
+<p>
+    sender = forms.EmailField()
+</p>
+<p>
+    cc_myself = forms.BooleanField(required=False)
+</p>
+<p>
+    All you need to do to get your form into a template is to place the form
+instance into the template context. So if your form is called<code>form</code> in the context, <code>{{ form }}</code> will render its    <code>&lt;label&gt;</code> and <code>&lt;input&gt;</code> elements
+    appropriately .
+</p>
+<ol type="I">
+    <p>
+        <code>There are other output options though for the </code>
+        <code>&lt;label&gt;</code>
+        <code>/</code>
+        <code>&lt;input&gt;</code>
+        <code> pairs :</code>
+    </p>
+    <ol type="a">
+        <li>
+            <p>
+                <code><strong>{{ form.as_table }}</strong></code>
+will render them as table cells wrapped in                <code>&lt;tr&gt;</code> tags
+            </p>
+        </li>
+        <li>
+            <p>
+                <code><strong>{{ form.as_p }}</strong></code>
+                will render them wrapped in <code>&lt;p&gt;</code> tags
+            </p>
+        </li>
+        <li>
+            <p>
+                <code><strong>{{ form.as_ul }}</strong></code>
+                will render them wrapped in <code>&lt;li&gt;</code> tags
+            </p>
+        </li>
+    </ol>
+</ol>
+<p>
+    <code> Here’s the output of </code>
+    <code><strong>{{ form.as_p }}</strong></code>
+    <code><strong> </strong></code>
+    <code>for our </code>
+    <code>ContactForm</code>
+    <code> instance :</code>
+</p>
+<p>
+    <code> </code>
+    <code>&lt;p&gt;&lt;label for="id_subject"&gt;Subject:&lt;/label&gt;</code>
+</p>
+<p>
+    <code>
+        &lt;input id="id_subject" type="text" name="subject" maxlength="100"
+        required&gt;&lt;/p&gt;
+    </code>
+</p>
+<p>
+    <code> &lt;p&gt;&lt;label for="id_message"&gt;Message:&lt;/label&gt;</code>
+</p>
+<p>
+    <code>
+        &lt;textarea name="message" id="id_message"
+        required&gt;&lt;/textarea&gt;&lt;/p&gt;
+    </code>
+</p>
+<p>
+    <code> &lt;p&gt;&lt;label for="id_sender"&gt;Sender:&lt;/label&gt;</code>
+</p>
+<p>
+    <code>
+        &lt;input type="email" name="sender" id="id_sender"
+        required&gt;&lt;/p&gt;
+    </code>
+</p>
+<p>
+    <code>
+        &lt;p&gt;&lt;label for="id_cc_myself"&gt;Cc myself:&lt;/label&gt;
+    </code>
+</p>
+<p>
+    <code>
+        &lt;input type="checkbox" name="cc_myself"
+        id="id_cc_myself"&gt;&lt;/p&gt;
+    </code>
+</p>
+<ol type="I">
+    <p>
+        <code>II . </code>
+        <code>Creating </code>
+        <code>Django Model form</code>
+    </p>
+</ol>
+<p>
+    <code><strong> Import Statement :</strong></code>
+</p>
+<ol type="I">
+    <ol type="I">
+        <ol type="I">
+            <ol type="I" start="0">
+                <pre><code>from django.forms import ModelForm</code>
+<code>from .model import Employee </code></pre>
+            </ol>
+        </ol>
+    </ol>
+</ol>
+<pre><code><strong>		Code Reference :</strong></code></pre>
+<ol type="I">
+    <ol type="I">
+        <ol type="I">
+            <ol type="I" start="0">
+                <p>
+                    <code>c</code>
+                    <code>lass </code>
+                    <code><strong>EmployeeForm</strong></code>
+                    <code> ( ModelForm ) :</code>
+                </p>
+                <ol type="I">
+                    <p>
+                        <code>class </code>
+                        <code><strong>Meta</strong></code>
+                        <code>:</code>
+                    </p>
+                    <ol type="I">
+                        <p>
+                            <code>model = Employee</code>
+                        </p>
+                    </ol>
+                </ol>
+            </ol>
+        </ol>
+    </ol>
+</ol>
+<p>
+    <code> </code>
+    <code>fields = [ ‘ Name ’ , ‘ age ’ , ‘ Employee_id ’ , ‘</code>
+    <code>Department </code>
+    <code>’ ]</code>
+</p>
+<p>
+    <code> </code>
+    <code>exclude = [ ‘ Address ’ ]</code>
+</p>
+<p>
+    All you need to do to get your form into a template is to place the form
+instance into the template context. So if your form is called<code>form</code> in the context, <code>{{ form }}</code> will render its    <code>&lt;label&gt;</code> and <code>&lt;input&gt;</code> elements
+    appropriately .
+</p>

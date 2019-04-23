@@ -1,0 +1,101 @@
+<ul>
+    <li>
+        <p>
+            Accessing python API shell for creating Order objects and product
+            Objects.
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p>
+            Importing Order , Products model in shell.
+        </p>
+    </li>
+</ul>
+<p>
+    <strong> Hint : </strong>
+</p>
+<p>
+    from orders.models import Order , Product
+</p>
+<ul>
+    <li>
+        <p>
+            Creating Order and Product objects in shell.
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    <strong>&gt;&gt;</strong>
+    Product.objects.create(product_name='veg
+    sandwitch',product_details='contains tomato and keera ', price=60,)
+</p>
+<p>
+    <strong>&gt;&gt; &lt; Product: veg sandwitch (60) &gt;</strong>
+</p>
+<p>
+    <strong>&gt;&gt; </strong>
+    Product.objects.all()
+</p>
+<p>
+    <strong>
+        &gt;&gt; &lt; QuerySet [ &lt; Product: Paneer Tikka (160) &gt; , &lt;
+        Product: Roasted Chicken (190) &gt; , &lt; Product: veg sandwitch (60)
+        &gt;, &lt; Product: chicken sandwitch (80) &gt; ]&gt;
+    </strong>
+</p>
+<p>
+    <strong>Registering models in admin.py</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Importing all model classes from models.py
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p>
+            Registring all models in admin.py .
+        </p>
+    </li>
+</ul>
+<p>
+    Hint :
+</p>
+<p>
+    from . models import Order,Product
+</p>
+<p>
+    admin.site.register(Order)
+</p>
+<p>
+    <strong>Include app level urls in project level urls .</strong>
+    <br/>
+</p>
+<p>
+    Hint :
+</p>
+<p>
+    urlpatterns = [
+</p>
+<p>
+    url(r ' ^ ' , include(' orders.urls') ) ,
+</p>
+<p>
+    ]
+</p>
+<p>
+    Now the project environment setup is ready for writing views urls and
+    templates .
+</p>
+<p>
+Before getting getting started into started , create a    <strong>index.html</strong> which wil be as parent template to all inner
+    templates , on which it should have a nav bar . which should be common for
+    every template .
+</p>

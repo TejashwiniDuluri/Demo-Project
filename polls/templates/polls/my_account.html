@@ -1,0 +1,130 @@
+{% extends 'home.html' %}
+{%block content %}
+ <div class="containerCus">
+ <div class="row">
+  <div class="col">
+    <h4 class="mb-4">Overview</h4>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="tabs tabs-vertical tabs-left tabs-navigation">
+          <ul class="nav nav-tabs col-sm-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="#tabsNavigation1" data-toggle="tab"> My Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation2" data-toggle="tab"> Active courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation3" data-toggle="tab"> Completed courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation4" data-toggle="tab"> Skills tracker</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation5" data-toggle="tab"> Timeline</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#tabsNavigation6" name='Messages' data-toggle="tab" > Messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation7" data-toggle="tab"> Change Password</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation8" data-toggle="tab"> Profile Picture</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#tabsNavigation9" data-toggle="tab"> User Report</a>
+            </li> -->            
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="tab-pane tab-pane-navigation active" id="tabsNavigation1">
+          <h4>My Courses</h4>
+          <a href="/courses/" class="btn btn-outline btn-primary btn-xl mb-2">Explore Courses</a>
+        </div>
+        <div class="tab-pane tab-pane-navigation" id="tabsNavigation2">
+          <h4>Active courses</h4>
+            <a href="/reg_courses/" class="btn btn-outline btn-primary btn-xl mb-2">Active courses</a>
+        </div>
+        <div class="tab-pane tab-pane-navigation" id="tabsNavigation3">
+          <h4>Completed courses</h4>
+        </div>
+        <div class="tab-pane tab-pane-navigation" id="tabsNavigation4">
+          <h4>Skills tracker</h4>
+          <a href="/skills_set/" class="btn btn-outline btn-primary btn-xl mb-2"> Skills Set </a>
+        </div>
+        <div class="tab-pane tab-pane-navigation" id="tabsNavigation5">
+          
+            <div class="row">
+              <div class="col-md-8">
+              <div class="container">
+              <h4>Timeline</h4>
+              {% for i in reg %}
+                <a href="/course_report/{{i.course.id}}" class="btn btn-outline btn-primary btn-xl mb-2"> {{i.course.name}} </a>
+              {% endfor %}
+              </div>
+              </div>
+        </div>
+        </div>
+        <div class="tab-pane tab-pane-navigation" id="tabsNavigation6">
+          <h4>Messages</h4>
+            <a href="/user_messages/" class="btn btn-outline btn-primary btn-xl mb-2"> Messages </a>
+
+        </div>
+        
+        <div class="tab-pane tab-pane-navigation " id="tabsNavigation7">
+          <a href="/change_password/" class="btn btn-outline btn-primary btn-xl mb-2">Change Password</a>
+          
+        </div>
+        <div class="tab-pane tab-pane-navigation " id="tabsNavigation8">
+            
+          <div class="row">
+            <div class="col-md-8">
+              <div class="container">
+                  <h1>Profile</h1>
+                  <p>Username : {{user.username}}</p>
+                  <p>Address : {{user.address}}</p>
+                  <p>Contact : {{user.phone_number}}</p>
+                  <p>Email ID: {{user.email}}</p>
+
+                  {% if request.user.account_type == 'mentor' %}
+                    <a href="/mentorUpdate/" class="btn btn-outline btn-primary btn mb-2">Update Details</a>
+                  {% elif request.user.account_type == 'Employer' %}
+                    <a href="/empUpdate/" class="btn btn-outline btn-primary btn mb-2">Update Details</a>
+                  {% else %}
+                    <a href="/userUpdate/" class="btn btn-outline btn-primary btn mb-2">Update Details</a>
+
+                  {% endif %}
+              </div>  
+            </div>
+            <div class="col-md-4">
+              <div class="profile">
+                <img  alt="Porto"  width="175" height="175" src='/media/pp/{{request.user.username}}/profile.jpg'>
+                <p>
+                  <a href="/upload_pp/" class="btn btn-outline btn-primary btn mb-2">Change Profile Picture</a>
+                </p>
+              
+              </div>  
+            </div>
+          </div>
+        </div>
+        <!-- <div class="tab-pane tab-pane-navigation " id="tabsNavigation9">
+          <a href="/course_report/" class="btn btn-outline btn-primary btn-xl mb-2">User Report</a>
+          
+        </div> -->
+              
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}.
+
+
+
+
+
+
+

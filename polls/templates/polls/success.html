@@ -1,0 +1,99 @@
+{% extends 'home.html' %} 
+{% block content %}
+<div class="containerCus1"> 
+<div class="featured-box featured-box-primary text-center mt-5">
+        <div class="box-content center">
+                <div class= "col text-center">
+                <h2 style="color:green">Report</h2>
+                <div class="row">
+                {% if test_sub_data %}
+                        <div class="col-md-12 center">
+                                <div class=" center">
+                                        <div class="timline center">
+                                                <h3>Test Name:{{ test_sub_data.test_test}}</h3>
+                                                <p>Answer Accuracy: {{test_sub_data.test_percent}}%</p>
+                                                <p>Time Taken: {{test_sub_data.test_timetaken |floatformat}} Seconds</p>
+                        <table class="table table-hover table-bordered">
+                                <thead>
+                                        <tr>
+                                                <th>S.NO </th>
+                                                <th>Question</th>
+                                                <th>Submitted Answer</th>
+                                                <th>Correct Answer</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                                {% for data in test_sub_data.ans_records %}
+
+                                        <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td><span>{{data.question}}</span></td>
+                                                <td><span>{{data.submitted_answer}}</span></td>
+                                                {% if data.submitted_answer == data.correct_answer%}
+                                                <td class="correctAnswer">
+                                                  <span>{{data.correct_answer}}</span>
+                                                </td>
+                                                        {% else %}
+                                                <td class="wrongAnswer">
+                                                    <span>{{data.correct_answer}}</span>
+                                                </td>
+                                                        {% endif %}
+                                        </tr>
+                                                {% endfor %}
+                                </tbody>
+                        </table>
+                                        </div>
+                                </div>
+                {% elif assign %}
+                        <div class="col-md-12 center">
+                                <div class="card-topic center">
+                                        <div class="center">
+                                                <p>Answer Accuracy: {{assign_percent}} %</p>
+                                                <p>Time Taken: {{assign_timetaken |floatformat}} Seconds</p>
+                        
+                        <table class="table table-hover table-bordered">
+                                <thead>
+                                        <tr>
+                                                <th>S.No</th>
+                                                <th>Question</th>
+                                                <th>Submitted Answer</th>
+                                                <th>Correct Answer</th>
+                                                <th>Suggested Topic</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                                {% for i in assign %}
+                                        <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td><span>{{i.question}}</span></td>
+                                                <td><span>{{i.submitted_ans}}</span></td>
+                                                <td><span>{{i.correct_ans}}</span></td>
+                                                        {% ifnotequal i.correct_ans i.submitted_ans %}
+                                                        <td><span><a class="btn waves-effect waves-light btn-rounded btn-outline-info" href="{% url 'topic' i.topic_id %}" style="width:60%"> {{ i.topic }}</a></span></td>
+                                                        {% else %}
+                                                        <td>None</td>
+                                                        {% endifnotequal %}
+                                        </tr>
+                                                {% endfor %}
+                                </tbody>
+                        </table>
+
+                                                {% if assign.assign_percent > 80 and next_chap %}
+                                                        <div class="row">
+                                                                <div class="clo-md-4">
+                                                                        <a class="btn btn-outline btn-tertiary from-control" href="{% url 'chapt' id %}">{{next_chap}}</a>
+                                                                </div>
+                                                        </div>
+                                                {% endif %}
+                                        </div>
+                                </div>
+                        </div>
+                        </div> 
+                {% endif %}
+                
+                </div>
+                </div>
+        </div>
+</div>
+</div>
+{% endblock %}

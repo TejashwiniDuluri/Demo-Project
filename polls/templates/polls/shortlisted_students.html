@@ -1,0 +1,44 @@
+{% extends 'home.html' %} 
+
+{%block content %}
+
+<div class="featured-box featured-box-primary text-center mt-5">
+	<div class="box-content text-center">
+		<div class= "col text-center">
+			<h3 class="heading-primary">Students Shortlisted</h3>
+			<div class="row">
+				{% if total %}
+				<table class="table table-hover table-bordered">
+		        	<thead>
+		        		<tr>
+		        			<th>Student-Id</th>
+		        			<th>name</th>
+		        			<th>contact-no</th>
+		        			<th>email-id</th>
+		        			<th>course</th>
+							<th>Shortlisted-date</th>
+	        			</tr>
+		        	</thead>
+		        	<tbody>
+			        		{% for i in total %}
+			        		<tr>
+			        			<td><span>{{i.student.id}}</span></td>
+			        			<td><span>{{i.student.username}}</span></td>
+			        			<td><span>{{i.student.phone_number}}</span></td>
+			        			<td><span>{{i.student.email}}</span></td>
+			        			<td><span>{{i.course.name}}</span></td>
+			        			<td>{{i.time}}</td>
+
+			        		</tr>
+			        		{% endfor %}
+		        	</tbody>
+		        </table>
+        		
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+

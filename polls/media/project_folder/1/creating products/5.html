@@ -1,0 +1,193 @@
+<p>
+    <strong>Creating Product</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            <strong>creating view to Create product .</strong>
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is to load the form template in order to save
+    the fom data and validate and to create a new product object .
+</p>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    <strong> </strong>
+    Import the <strong>modelform</strong> from from.py to load and save the
+    form data.
+</p>
+<p>
+    <strong>Code:</strong>
+</p>
+<p>
+    from forms.py import ProductForm
+</p>
+<p>
+    def product_create (request ) :
+</p>
+<p>
+    form = ProductForm( request.POST )
+</p>
+<p>
+    if request.method == ‘POST’:
+</p>
+<p>
+    if form.is_valid ( ):
+</p>
+<p>
+    form.save()
+</p>
+<p>
+    else :
+</p>
+<p>
+    form = ProductForm()
+</p>
+<p>
+    context = { ‘form’ : form }
+</p>
+<p>
+    return render (request , orders/ProductCreate.html , context)
+</p>
+<ul>
+    <li>
+        <p>
+            <strong>
+                writing an url for associated view (Create product) .
+            </strong>
+        </p>
+    </li>
+</ul>
+<p>
+    This will send an request object to the associated view . Inturn the view
+    will sends response
+</p>
+<p>
+    <strong> </strong>
+</p>
+<p>
+    <strong> </strong>
+    <strong>Hint</strong>
+    :
+</p>
+<p>
+    import the view from views .py and link it to url
+</p>
+<p>
+    <strong>code :</strong>
+</p>
+<p>
+    <strong> </strong>
+    url ( ‘productcreate ’ , views.productcreate , name= ‘ productcreate’ )
+</p>
+<ul>
+    <li>
+        <p>
+            <strong>Create a Form using model</strong>
+        </p>
+    </li>
+</ul>
+<p>
+    <strong> </strong>
+    <strong>Hint :</strong>
+    <strong> </strong>
+</p>
+<p>
+    import product model from models.py and create a form
+</p>
+<p>
+    <strong>code :</strong>
+    <br/>
+</p>
+<p>
+    <strong> </strong>
+    from order.models import Product
+</p>
+<p>
+    class ProductForm (ModelForm):
+</p>
+<p>
+    class Meta :
+</p>
+<p>
+    model = Product
+</p>
+<p>
+    fields = [‘Product_name’, ‘Product_details’ , ‘Price ’ , ‘Active’]
+</p>
+<p>
+    <strong>Create a form template to Create Product</strong>
+</p>
+<ul>
+</ul>
+<p>
+    Extend this form for index.html .
+</p>
+<p>
+    <a name="__DdeLink__208_625625353"></a>
+    Create html template with below attributes or rather use django model form
+    which takes care generating html body for submiting data .
+</p>
+<p>
+    <strong> </strong>
+</p>
+<p>
+    <strong> Hint :</strong>
+</p>
+<p>
+    By using ModelForm , there no need to write html for every attribute
+    .Simply place
+</p>
+<p>
+    <strong>{{form. as_p }} </strong>
+    which will take care of generating html form in template .
+</p>
+<p>
+    <strong>--&gt; Form contains</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            Product_name .
+        </p>
+    </li>
+    <li>
+        <p>
+            Product_details .
+        </p>
+    </li>
+    <li>
+        <p>
+            Price .
+        </p>
+    </li>
+    <li>
+        <p>
+            Active .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>
+        Note : if using model form the template structure will be the below .
+    </strong>
+</p>
+<p>
+    &lt;form method = POST &gt;
+</p>
+<p>
+    {% csrf_token %}
+</p>
+<p>
+    {{ form.as_p }}
+</p>
+<p>
+    &lt;button type="submit" class="btn btn-success"&gt;Submit&lt;/button&gt;
+</p>
+<p>
+    &lt;/form&gt;
+</p>

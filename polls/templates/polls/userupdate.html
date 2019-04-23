@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="block">
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <h2>Update Your Details</h2>
+            
+        </div>
+        <form action="/userUpdate/" method="post" enctype="multipart/form-data">{% csrf_token %}
+            
+                <h4>Address</h4>
+                <textarea type="text" name="Address" class="form-control">
+                </textarea>
+                <br>
+                <h4>Contact_no:</h4>
+                <input type="text" name="Contact_no" class="form-control">
+                <br>
+                
+                <input type="submit" value="submit"  class="btn btn-primary">
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

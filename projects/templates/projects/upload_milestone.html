@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <h1>Create a Milestone</h1>
+            
+        </div>
+        <form action="/upload_milestone/" method="post" enctype="multipart/form-data" >{% csrf_token %}
+                <h4>milestone sl_no:</h4>
+                <input type="number" name="sl_no" class="form-control">
+                <br>
+
+                <h4>Project</h4>
+                <select  id="project" name="project" class="form-control" >
+                {% for project in projects %}
+                    <option value='{{project.id}}'>{{project.name}}</option>
+                {% endfor %}
+                </select>
+                <br>
+
+                <h4>Tag</h4>
+                <select  id="tag" name="tag_name" class="form-control" multiple>
+                {% for tag in tags %}
+                    <option value='{{tag.id}}'>{{tag.tag_name}}</option>
+                {% endfor %}
+                </select>
+
+                <br>
+
+                <h4>Milestone name</h4>
+                <input type="text" name="milestone"  class="form-control">
+                <br>
+
+                <h4>Description</h4>
+                <input type="text" name="description"  class="form-control">
+                <br>
+
+                <h4>next_chap</h4>
+                <input type="text" name="next_chap"  class="form-control">
+
+                <br>
+                <h4>Page content</h4>
+                <input type="text" name=" page_content"  class="form-control">
+                <br>
+
+                <h4>Duration</h4>
+                <input type="number" name=" duration"  class="form-control">
+                <br>
+
+
+                <h4>Doc:</h4>
+                <input id="id_docfile" type="file"  class="form-control" accept=".xlsx,.xls,.html,.doc, .docx,.ppt, .pptx,.txt,.pdf" name="myfile" multiple/>
+            
+                <br>
+                <input type="submit" value="submit"  class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+
+{% endblock %}

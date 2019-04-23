@@ -1,0 +1,37 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="featured-box featured-box-primary text-left mt-5">
+	<div class="box-content">
+	<!-- {% for i in assignment %}
+		<pre style="white-space: pre-wrap; color:red;">{{forloop.counter}})&nbsp{{i.snippet}}</pre>
+	{% endfor %} -->
+
+	<h4 style="text-align: center;color:black;"> Take Assignment </h4>
+	<h4 style="text-align: center;color:black;">Chapter:<span> {{chap}} </span></h4>
+	<div class="row">
+		<div class="col-lg-8" >
+			<div class="toggle toggle-primary mt-4" data-plugin-toggle>
+				{% for assign in assignment %}
+				<section class="toggle" >
+					<label>{{forloop.counter}})&nbsp{{assign.question}}</label>
+					<div class="toggle-content">
+					<h6><strong>Question:</strong></h6>
+						<p>{{assign.question}}</p>
+					<h6><strong>Topics Involved :</strong></h6>
+						<p>{{assign.topic_tag}}</p>
+					<h6><strong>Steps:</strong></h6>
+						{% for i in assign.steps %}  
+						<p><strong>{{forloop.counter}}</strong>)&nbsp&nbsp&nbsp{{i}}</p>
+						{% endfor %}
+					<br/>
+					<a class="btn btn-primary btn-outline " target="_blank" href="/compiler/" >Write Code</a>
+
+					</div>
+				</section>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

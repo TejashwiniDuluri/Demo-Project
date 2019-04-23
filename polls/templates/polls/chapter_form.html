@@ -1,0 +1,44 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="block">
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <h1>Create a Chapter</h1>
+            
+        </div>
+        <form action="/add_chapter/" method="post" enctype="multipart/form-data">{% csrf_token %}
+            
+                <h4>Course name:</h4>
+                <select name="course" id="course" class="form-control">
+                    {% for i in course %}
+                        <option value="{{i.id}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+            
+                <br>
+            
+                <h4>Chapter name:</h4>
+                <input type="text" name="chapt"  class="form-control">
+                
+                <br>
+                <h4>Description :</h4>
+                <input type="text" name="description"  class="form-control">
+                <br>
+
+                <h4>Duration :</h4>
+                <input type="text" name="duration" class="form-control">
+                <br>
+
+                <h4>
+                <!-- <h4>Serial number:</h4>
+                <input type="text" name="lot_no" class="form-control">
+                <br> -->
+                <input type="submit" value="submit"  class="btn btn-primary">
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

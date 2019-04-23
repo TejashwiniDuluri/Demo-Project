@@ -1,0 +1,60 @@
+<p>
+    <strong>Deleting Product</strong>
+</p>
+<ul>
+    <li>
+        <p>
+            creating a viewDelete product .
+        </p>
+    </li>
+</ul>
+<p>
+    Functionality of this view is , it recieves object id as parameter and
+    performs delete operation .
+</p>
+<p>
+    <strong> Hint : </strong>
+</p>
+<p>
+    Should accept id as argument and perform the deletion operation on specif
+    object .
+</p>
+<p>
+    <strong>Code :</strong>
+</p>
+<p>
+    <strong> </strong>
+    def delete_product( request , id ) :
+</p>
+<p>
+    Product.object.get(id=id).delete()
+</p>
+<p>
+    return redirect( ‘products’ )
+</p>
+<ul>
+    <li>
+        <p>
+            writing an url for associated view with argument " id " (Delete
+            product) .
+        </p>
+    </li>
+</ul>
+<p>
+    <strong>Hint :</strong>
+</p>
+<p>
+    Recieves id as argument from products.html
+</p>
+<p>
+    <strong> code: </strong>
+</p>
+<p>
+    <strong></strong>
+    url ( r'^ delete/id +) / $' , views.delete_product , name =
+    'delete_product' )
+</p>
+<p>
+    Insert a button in All products template with url for sending object id and
+    performing delete operation.
+</p>

@@ -1,0 +1,84 @@
+<p align="justify">
+    <strong>INTRODUCTION</strong>
+</p>
+<p align="justify">
+    Python is a high-level, interpreted, interactive and object-oriented
+    scripting language. Python is designed to be highly readable. It uses
+    English keywords frequently where as other languages use punctuation, and
+    it has fewer syntactical constructions than other languages.
+</p>
+<p align="justify">
+    <strong>Python is Interpreted </strong>
+    − Python is processed at runtime by the interpreter. You do not need to
+    compile your program before executing it. This is similar to PERL and PHP.
+</p>
+<p align="justify">
+    <strong>Python is Interactive </strong>
+    − You can actually sit at a Python prompt and interact with the interpreter
+    directly to write your programs.
+</p>
+<p align="justify">
+    <strong>Python is Object-Oriented </strong>
+    − Python supports Object-Oriented style or technique of programming that
+    encapsulates code within objects.
+</p>
+<p align="justify">
+    <strong>Python is a Beginner's Language </strong>
+    − Python is a great language for the beginner-level programmers and
+    supports the development of a wide range of applications from simple text
+    processing to WWW browsers to games.
+</p>
+<p align="justify">
+    <strong> NUMPY</strong>
+</p>
+<p align="justify">
+    NumPy is a Python package. It stands for 'Numerical Python'. It is a
+    library consisting of multidimensional array objects and a collection of
+    routines for processing of array.
+</p>
+<p align="justify">
+    Numeric, the ancestor of NumPy, was developed by Jim Hugunin. Another
+    package Numarray was also developed, having some additional
+    functionalities. In 2005, Travis Oliphant created NumPy package by
+    incorporating the features of Numarray into Numeric package. There are many
+    contributors to this open source project.
+</p>
+        <h2>
+            <strong>Operations using NumPy</strong>
+        </h2>
+<ul>
+    <li>
+        <p align="justify">
+            Using NumPy, a developer can perform the following operations −
+        </p>
+    </li>
+    <li>
+        <p align="justify">
+            Mathematical and logical operations on arrays.
+        </p>
+    </li>
+    <li>
+        <p align="justify">
+            Fourier transforms and routines for shape manipulation.
+        </p>
+    </li>
+    <li>
+        <p align="justify">
+            Operations related to linear algebra. NumPy has in-built functions
+            for linear algebra and random number generation.
+        </p>
+    </li>
+</ul>
+        <h2>
+            <strong>NumPy – A Replacement for MatLab</strong>
+        </h2>
+<p align="justify">
+    NumPy is often used along with packages like scipy (Scientific Python) and
+    matplotlib<strong> </strong>(plotting library). This combination is widely
+    used as a replacement for MatLab, a popular platform for technical
+    computing. However, Python alternative to MatLab is now seen as a more
+    modern and complete programming language.
+</p>
+<p align="justify">
+    It is open source, which is an added advantage of NumPy.
+</p>

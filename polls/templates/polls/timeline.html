@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="row">
+	{% for test in tests %}
+		<div class="col-md-4">
+			<div class="card card-topic">
+				<div class="card-content timline">
+					<h3>Test Name:{{test.test_test}}</h3>
+					<p>Time:{{test.test_time}}</p>
+					<p>Answers:{{test.ans_records}}</p>
+					<p>Answer Accuracy: {{test.test_percent}}%</p>
+					<p>Time Taken: {{test.test_timetaken |floatformat}} Seconds</p>
+				</div>
+			</div>
+		</div>
+		<div class="spacer5"></div>
+	{% endfor %}
+	</div>
+{% endblock %}

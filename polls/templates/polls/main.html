@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="container">
+		<div class="rowCus">
+			<div class="col-md-cus-21">
+				<div class="col-md-3">
+					<h4 class="heading-primary"><strong>Courses </strong></h4>
+				</div>
+				<div class="leftMenu">
+				<ul class="nav nav-list flex-column list-icons list-icons-style-3">
+					{% for i in courses %}
+						<li class="nav-item active">
+							<a href="/students_display/{{i.id}}">{{i.name}}</i></a>
+						</li>
+					{% endfor %}
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+							
+						
+							
+						
+					

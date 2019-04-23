@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <h1>Upload Tag file</h1>
+            
+        </div>
+        <form action="/tag_file_upload/" method="post" enctype="multipart/form-data" >{% csrf_token %}
+                <h4>Tag-Name</h4>
+                <input type="text" name="tag_name" class="form-control">
+                <br>
+
+                <h4>course</h4>
+                <select  id="course_name" name="course_name" class="form-control" >
+                {% for course in courses %}
+                    <option value='{{course.id}}'>{{course.name}}</option>
+                {% endfor %}
+                </select>
+                
+
+                <h4>Doc:</h4>
+                <input id="id_docfile" type="file"  class="form-control" accept=".xlsx,.xls,.html,.doc, .docx,.ppt, .pptx,.txt,.pdf" name="myfile" multiple/>
+            
+                <br>
+                <input type="submit" value="submit"  class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+
+{% endblock %}

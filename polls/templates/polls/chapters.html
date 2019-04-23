@@ -1,0 +1,50 @@
+{% extends 'home.html' %}
+{% block content %}
+	<div class="containerCus1">
+			<h2>Course: <strong>{{course}}</strong></h2>
+			
+			<div class="row">
+				<div class="col">
+					<p class="lead">
+						
+					</p>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="toggle toggle-primary mt-4" data-plugin-toggle>
+						{% for chapter in chapters %}
+						<section class="toggle">
+							<label>{{chapter.name}}</label>
+							<div class="toggle-content">
+								<p><strong>Chapter:</strong> {{chapter.name}}</p>
+								<p><strong>Topics:</strong> {% for topic in chapter.topics_set.all %}<a href="/topic/{{topic.id}}"><div>{{topic.name}}</div></a> <div class="divider"></div> {% endfor %}</p>
+							</div>
+						</section>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="featured-box featured-box-primary">
+						<div class="box-content">
+							<h4 class="text-uppercase">{{course}}</h4>
+							<hr>
+							<ul class="list list-icons text-left">
+								<li><i class="fas fa-clock"></i>Duration : {{duration}}</li>
+								<li><i class="fas fa-clipboard"></i>Chapters : {{course.no_of_chapters}}</li>
+								<li><i class="fas fa-question"></i>Prerequisites : {{course.prerequisites}}</li>
+								<li><i class="fas fa-user"></i>Author : {{course.author}}</li>
+								<li><i class="fas fa-keyboard"></i>Type of course : {{course.tag_name}}</li>
+							</ul>
+							{% if registered == None %}
+							<a href="/add_to_cart/{{course.id}}" class="btn btn-outline btn-primary form-control">Add to Cart</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>	
+			</div>
+	</div>
+{% endblock %}
